@@ -1,36 +1,36 @@
 public class OOPSBannerApp {
     public static String[] getPatternO(){
         String[] patternO = {
-            "    ***   ",
-            "   *   *  ",
-            "   *   *  ",
-            "   *   *  ",
-            "   *   *  ",
-            "    ***   "
+                        String.join("", "    ", "***", "   "),
+            String.join("", "   ", "*", "   ", "*", "  "),
+            String.join("", "   ", "*", "   ", "*", "  "),
+            String.join("", "   ", "*", "   ", "*", "  "),
+            String.join("", "   ", "*", "   ", "*", "  "),
+            String.join("", "    ", "***", "   ")
         };
         return patternO;
     }
 
     public static String[] getPatternP(){
         String[] patternP = {
-            "   ****   ",
-            "  *    *  ",
-            "  *    *  ",
-            "  ****    ",
-            "  *       ",
-            "  *       "
+            String.join("", "   ", "****", "   "),
+            String.join("", "  ", "*", "    ", "*", "  "),
+            String.join("", "  ", "*", "    ", "*", "  "),
+            String.join("", "  ", "****", "    "),
+            String.join("", "  ", "*", "       "),
+            String.join("", "  *       ")
         };
         return patternP;
     }
 
     public static String[] getPatternS(){
         String[] patternS = {
-            "  **** ",
-            " *     ",
-            "  ***  ",
-            "     * ",
-            "     * ",
-            "  **** "
+            String.join("", "  ", "****", " "),
+            String.join("", " *     "),
+            String.join("", "  ***  "),
+            String.join("", "     * "),
+            String.join("", "     * "),
+            String.join("", "  **** ")
         };
         return patternS;
     }  
