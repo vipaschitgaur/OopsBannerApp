@@ -3,7 +3,7 @@ public class OOPSBannerApp {
         private final char character;
         private String[] pattern;
 
-        public CharacterPatternMap(Character character, String[] pattern){
+        public CharacterPatternMap(char character, String[] pattern){
             this.character = character;
             this.pattern = pattern;
         }
