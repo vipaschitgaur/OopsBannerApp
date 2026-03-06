@@ -1,92 +1,67 @@
+import java.util.HashMap;
+import java.util.Map;
+
 public class OOPSBannerApp {
-    static class CharacterPatternMap{
-        private final char character;
-        private String[] pattern;
+    public static Map<Character, String[]> buildPatternMap() {
+        Map<Character, String[]> patternMap = new HashMap<>();
+        patternMap.put('O', getPatternO());
+        patternMap.put('P', getPatternP());
+        patternMap.put('S', getPatternS());
+        return patternMap;
+    }
 
-        public CharacterPatternMap(char character, String[] pattern){
-            this.character = character;
-            this.pattern = pattern;
-        }
-
-        public char getCharacter(){
-            return character;
-        }
-
-        public String[] getPattern(){
-            return pattern;
-        }
-
-        public static CharacterPatternMap[] createCharacterPatternMaps(){
-            CharacterPatternMap[] maps =new CharacterPatternMap[3];
-            maps[0] = new CharacterPatternMap('O', getPatternO());
-            maps[1] = new CharacterPatternMap('P' , getPatternP());
-            maps[2] = new CharacterPatternMap('S', getPatternS());
-            return maps;
-        }
-
-        public static String[] getCharacterPattern(char ch, CharacterPatternMap[] charMaps){
-            for (CharacterPatternMap m : charMaps){
-                if (m.getCharacter()==ch) 
-                    return m.pattern;
+    public static void printMessage(String message, Map<Character, String[]> patterns){
+        int height = patterns.get('O').length; // assuming all patterns have the same height
+        for (int i = 0; i < height; i++) {
+            String row = "";
+            for (char c : message.toCharArray()) {
+                String[] charPattern = patterns.get(c);
+                row += charPattern[i] + "  ";
             }
-            return null;
+            System.out.println(row);
         }
-        public static void printMessage(String message, CharacterPatternMap[] charMaps){
-            String output = "";
-            int height = charMaps[0].pattern.length; // assuming all patterns have the same height
-            for (int i =0; i< height; i++){
-                String row = "";
-                for (char c : message.toCharArray()){
-                    String[] charPattern = getCharacterPattern(c, charMaps);
-                    row += charPattern[i] + "  ";
-                    output+=row;
-                }
-                System.out.println(row);
-             }
-
-        }
-        public static String[] getPatternO(){
-            String[] patternO = {
-                String.join("", "    ", "***", "   "),
-                String.join("", "   ", "*", "   ", "*", "  "),
-                String.join("", "   ", "*", "   ", "*", "  "),
-                String.join("", "   ", "*", "   ", "*", "  "),
-                String.join("", "   ", "*", "   ", "*", "  "),
-                String.join("", "    ", "***", "   ")
-            };
-            return patternO;
-        }
-
-        public static String[] getPatternP(){
-            String[] patternP = {
-                String.join("", "   ", "****", "   "),
-                String.join("", "  ", "*", "    ", "*", "  "),
-                String.join("", "  ", "*", "    ", "*", "  "),
-                String.join("", "  ", "****", "    "),
-                String.join("", "  ", "*", "       "),
-                String.join("", "  ", "*", "       ")
-            };
-            return patternP;
-        }
-
-        public static String[] getPatternS(){
-        String[] patternS = {
-            String.join("", "  ", "****", " "),
-            String.join("", " ", "*", "     "),
-            String.join("", "  ", "***", "  "),
-            String.join("", "     ", "*", " "),
-            String.join("", "     ", "*", " "),
-            String.join("", "  ", "****", " ")
+    }
+    
+    // patterns for O, P, and S
+    public static String[] getPatternO(){
+        String[] patternO = {
+            String.join("", "    ", "***", "   "),
+            String.join("", "   ", "*", "   ", "*", "  "),
+            String.join("", "   ", "*", "   ", "*", "  "),
+            String.join("", "   ", "*", "   ", "*", "  "),
+            String.join("", "   ", "*", "   ", "*", "  "),
+            String.join("", "    ", "***", "   ")
         };
-        return patternS;
-    }  
+        return patternO;
     }
-    public static void main(String[] args){
 
-        CharacterPatternMap[] charMaps = CharacterPatternMap.createCharacterPatternMaps();
+    public static String[] getPatternP(){
+        String[] patternP = {
+            String.join("", "   ", "****", "   "),
+            String.join("", "  ", "*", "    ", "*", "  "),
+            String.join("", "  ", "*", "    ", "*", "  "),
+            String.join("", "  ", "****", "    "),
+            String.join("", "  ", "*", "       "),
+            String.join("", "  ", "*", "       ")
+        };
+        return patternP;
+    }
+
+    public static String[] getPatternS(){
+    String[] patternS = {
+        String.join("", "  ", "****", " "),
+        String.join("", " ", "*", "     "),
+        String.join("", "  ", "***", "  "),
+        String.join("", "     ", "*", " "),
+        String.join("", "     ", "*", " "),
+        String.join("", "  ", "****", " ")
+    };
+    return patternS;
+}  
+
+    public static void main(String[] args) {
+        Map<Character, String[]> patterns = buildPatternMap();
         String message = "OOPS";
-        
-        CharacterPatternMap.printMessage(message, charMaps);
-        }
-
+        printMessage(message, patterns);
     }
+}
